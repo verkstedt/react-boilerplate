@@ -6,5 +6,25 @@
   "repository": "git@github.com:verkstedt/react-boilerplate.git",
   "author": "Georgios Giannoutsos Barkas <georgios@verkstedt.com>",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.32",
+    "@babel/preset-env": "^7.0.0-beta.32",
+    "@babel/preset-react": "^7.0.0-beta.32",
+    "@verkstedt/eslint-config-verkstedt": "^5.0.1",
+    "babel-loader": "8.0.0-beta.0",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "html-webpack-plugin": "^2.30.1",
+    "style-loader": "^0.19.0",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.5"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "prop-types": "^15.6.0",
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1",
+    "react-hot-loader": "^3.1.3"
+  }
 }
