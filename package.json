@@ -1,0 +1,10 @@
+{
+  "name": "react-boilerplate",
+  "version": "1.0.0",
+  "description": "Just the basics™ ",
+  "main": "server.js",
+  "repository": "git@github.com:verkstedt/react-boilerplate.git",
+  "author": "Georgios Giannoutsos Barkas <georgios@verkstedt.com>",
+  "license": "MIT",
+  "private": true
+}
