@@ -1,3 +1,3 @@
 import reduxCrud from 'redux-crud'
 
-export const thingActions = reduxCrud.actionCreatorsFor('things')
+export const locationActions = reduxCrud.actionCreatorsFor('locations', { key: 'name' })

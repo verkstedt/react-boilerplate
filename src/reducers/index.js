@@ -1,3 +1,1 @@
-import reduxCrud from 'redux-crud'
-
-export const things = reduxCrud.Map.reducersFor('things')
+export { default as locations } from './locations'
