@@ -7,13 +7,13 @@ function* wrap(saga, ...args) {
   return task
 }
 
-export function* fetchEntity(entity, apiFn, id, url) {
-  const { response, error } = yield call(apiFn, url || id)
+export function* fetchEntity(entityActions, requestFn, id, url) {
+  const { response, error } = yield call(requestFn, url || id)
 
   if (response) {
-    yield put(entity.fetchSuccess(response))
+    yield put(entityActions.fetchSuccess(response))
   } else {
-    yield put(entity.fetchError(error))
+    yield put(entityActions.fetchError(error))
   }
 }
 
