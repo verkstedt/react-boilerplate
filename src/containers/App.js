@@ -4,11 +4,10 @@ import { locationActions } from 'actions'
 import { func, arrayOf, shape, string } from 'prop-types'
 import { locationsSelector } from 'reducers/locations'
 
-
 import Location from 'components/Location'
 import Button from 'components/Button'
 
-class App extends Component {
+export class App extends Component {
   static propTypes = {
     fetchLocation: func.isRequired,
     locations: arrayOf(
