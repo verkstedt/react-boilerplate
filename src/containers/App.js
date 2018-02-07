@@ -7,6 +7,8 @@ import { locationsSelector } from 'reducers/locations'
 import Location from 'components/Location'
 import Button from 'components/Button'
 
+import './App.scss'
+
 export class App extends Component {
   static propTypes = {
     fetchLocation: func.isRequired,
