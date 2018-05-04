@@ -4,8 +4,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const conf = {
   entry: [
-    'babel-polyfill',
-    'react-hot-loader/patch',
     './src/main.js'
   ],
   output: {
@@ -13,7 +11,7 @@ const conf = {
     filename: 'bundle.js',
     publicPath: '/'
   },
-  devtool: 'inline-source-map',
+  devtool: 'eval',
   module: {
     rules: [
       {
@@ -24,16 +22,26 @@ const conf = {
         }
       },
       {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader', 'resolve-url-loader']
+      },
+      {
         test: /\.scss$/,
+        use: ['style-loader', 'css-loader', 'resolve-url-loader', 'sass-loader?sourceMap']
+      },
+      {
+        test: /\.(ttf|eot|woff|woff2)$/,
+        loader: 'file-loader',
+        options: {
+          name: 'fonts/[name].[ext]'
+        }
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
         use: [
           {
-            loader: 'style-loader' // creates style nodes from JS strings
-          },
-          {
-            loader: 'css-loader' // translates CSS into CommonJS
-          },
-          {
-            loader: 'sass-loader' // compiles Sass to CSS
+            loader: 'file-loader',
+            options: {}
           }
         ]
       }
@@ -47,13 +55,28 @@ const conf = {
     ]
   },
   plugins: [
+    new webpack.DefinePlugin({
+      __ENV__: JSON.stringify({})
+    }),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      title: 'Yo',
+      title: 'React Boilerplate',
       template: 'index.ejs'
     })
-  ]
+  ],
+  devServer: {
+    hot: true,
+    disableHostCheck: true,
+    port: 3000,
+    host: 'localhost',
+    stats: {
+      hash: false,
+      cached: false,
+      cachedAssets: false,
+      colors: true
+    }
+  }
 }
 
 module.exports = conf

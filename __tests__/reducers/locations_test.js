@@ -8,8 +8,8 @@ describe('location reducer', () => {
     expect(
       locationReducers([], {
         type: 'LOCATIONS_FETCH_SUCCESS',
-        records: [{ name: 'location1' }, { name: 'location 2' }]
+        records: [{ id: 1, name: 'location1' }, { id: 2, name: 'location 2' }]
       })
-    ).toEqual([{ name: 'location1' }, { name: 'location 2' }])
+    ).toEqual([{ id: 1, name: 'location1' }, { id: 2, name: 'location 2' }])
   })
 })

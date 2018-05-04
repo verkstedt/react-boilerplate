@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { hot } from 'react-hot-loader'
 import { connect } from 'react-redux'
 import { locationActions } from 'actions'
 import { func, arrayOf, shape, string } from 'prop-types'
@@ -24,7 +25,7 @@ export class App extends Component {
   }
 
   fetchLocation = () => {
-    this.props.fetchLocation({ id: 'Julius-Leber-Brücke' })
+    this.props.fetchLocation({ lat: '52.486773', lon: '13.355627' })
   }
 
   renderLocations() {
@@ -47,6 +48,8 @@ export class App extends Component {
   }
 }
 
+const hotApp = hot(module)(App)
+
 export default connect(locationsSelector, {
   fetchLocation: locationActions.fetchStart
-})(App)
+})(hotApp)
