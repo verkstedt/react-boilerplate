@@ -1,4 +1,4 @@
-const API_ROOT = 'https://vbb.transport.rest'
+const API_ROOT = 'https://2.vbb.transport.rest'
 
 const callAPI = endpoint => {
   const fullUrl = (endpoint.indexOf(API_ROOT) === -1) ? API_ROOT + endpoint : endpoint
@@ -11,5 +11,4 @@ const callAPI = endpoint => {
     )
 }
 
-
-export const fetchLocation = id => callAPI(`/locations?query=${id}`)
+export const fetchLocation = ({ lat, lon }) => callAPI(`/stations/nearby?latitude=${lat}&longitude=${lon}`)

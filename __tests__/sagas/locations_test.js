@@ -6,10 +6,11 @@ import {
 } from 'sagas/locations'
 
 describe('fetchLocation', () => {
+  const data = { lat: '52.486773', lon: '13.355627' }
   test('saga should call the bound function', () => {
-    const gen = fetchLocationSaga({ data: { id: 1 } })
+    const gen = fetchLocationSaga({ data })
 
     const next = gen.next()
-    expect(next.value).toEqual(call(fetchLocation, 1))
+    expect(next.value).toEqual(call(fetchLocation, data))
   })
 })

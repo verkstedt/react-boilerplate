@@ -1,6 +1,6 @@
 import reduxCrud from 'redux-crud'
 
-const locationReducers = reduxCrud.List.reducersFor('locations', { key: 'name' })
+const locationReducers = reduxCrud.List.reducersFor('locations')
 
 export default locationReducers
 

@@ -7,8 +7,8 @@ import { fetchEntity } from 'sagas/utils'
 
 export const fetchLocation = fetchEntity.bind(null, locationActions, api.fetchLocation)
 
-export function* fetchLocationSaga({ data: { id } }) {
-  yield call(fetchLocation, id)
+export function* fetchLocationSaga({ data }) {
+  yield call(fetchLocation, data)
 }
 
 export function* watchFetchLocation() {

@@ -25,7 +25,7 @@ export class App extends Component {
   }
 
   fetchLocation = () => {
-    this.props.fetchLocation({ id: 'Julius-Leber-Brücke' })
+    this.props.fetchLocation({ lat: '52.486773', lon: '13.355627' })
   }
 
   renderLocations() {
