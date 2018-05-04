@@ -1,19 +1,17 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { string, shape } from 'prop-types'
 
-class Location extends Component {
-  static propTypes = {
-    location: shape({
-      name: string.isRequired
-    }).isRequired
-  }
+const Location = props => {
+  const { location: { name } } = props
+  return (
+    <p>{name}</p>
+  )
+}
 
-  render() {
-    const { location: { name } } = this.props
-    return (
-      <p>{name}</p>
-    )
-  }
+Location.propTypes = {
+  location: shape({
+    name: string.isRequired
+  }).isRequired
 }
 
 export default Location

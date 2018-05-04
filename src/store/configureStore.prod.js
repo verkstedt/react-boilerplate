@@ -14,4 +14,3 @@ export default function configureStore(initialState) {
   store.close = () => store.dispatch(END)
   return store
 }
-
