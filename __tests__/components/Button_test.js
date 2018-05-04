@@ -1,6 +1,5 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import renderer from 'react-test-renderer'
 
 import Button from 'components/Button'
 
@@ -24,9 +23,7 @@ describe('<Button />', () => {
 
   it('renders correctly', () => {
     const spy = jest.fn()
-    const button = renderer
-      .create(<Button onClick={spy}><div className="unique" /></Button>)
-      .toJSON()
+    const button = shallow(<Button onClick={spy}><div className="unique" /></Button>)
     expect(button).toMatchSnapshot()
   })
 })

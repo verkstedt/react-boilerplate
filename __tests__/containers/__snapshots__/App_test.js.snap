@@ -5,10 +5,10 @@ exports[`<App /> renders correctly 1`] = `
   <h1>
     Hello world!
   </h1>
-  <button
+  <Button
     onClick={[Function]}
   >
     click to fetch station info
-  </button>
+  </Button>
 </div>
 `;
