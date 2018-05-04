@@ -1,6 +1,5 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
-import renderer from 'react-test-renderer'
 
 import { App } from 'containers/App'
 
@@ -22,9 +21,7 @@ describe('<App />', () => {
 
   it('renders correctly', () => {
     const spy = jest.fn()
-    const button = renderer
-      .create(<App fetchLocation={spy} />)
-      .toJSON()
+    const button = shallow(<App fetchLocation={spy} />)
     expect(button).toMatchSnapshot()
   })
 })
