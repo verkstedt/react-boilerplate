@@ -59,6 +59,7 @@ const conf = {
       __ENV__: JSON.stringify({})
     }),
     new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       title: 'React Boilerplate',
       template: 'index.ejs'
