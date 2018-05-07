@@ -1,6 +1,9 @@
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 const conf = {
   entry: [
@@ -11,7 +14,7 @@ const conf = {
     filename: 'bundle.js',
     publicPath: '/'
   },
-  devtool: 'eval',
+  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -25,6 +28,7 @@ const conf = {
         test: /\.css$/,
         use: [
           'style-loader',
+          MiniCssExtractPlugin.loader,
           'css-loader',
           'resolve-url-loader'
         ]
@@ -33,6 +37,7 @@ const conf = {
         test: /\.scss$/,
         use: [
           'style-loader',
+          MiniCssExtractPlugin.loader,
           'css-loader',
           'resolve-url-loader',
           'sass-loader?sourceMap'
@@ -63,6 +68,26 @@ const conf = {
       'node_modules'
     ]
   },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        styles: {
+          name: 'styles',
+          test: /\.css$/,
+          chunks: 'all',
+          enforce: true
+        }
+      }
+    },
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true
+      }),
+      new OptimizeCSSAssetsPlugin({})
+    ]
+  },
   plugins: [
     new webpack.DefinePlugin({
       __ENV__: JSON.stringify({})
@@ -72,20 +97,11 @@ const conf = {
     new HtmlWebpackPlugin({
       title: 'React Boilerplate',
       template: 'index.ejs'
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css'
     })
-  ],
-  devServer: {
-    hot: true,
-    disableHostCheck: true,
-    port: 3000,
-    host: 'localhost',
-    stats: {
-      hash: false,
-      cached: false,
-      cachedAssets: false,
-      colors: true
-    }
-  }
+  ]
 }
 
 module.exports = conf
