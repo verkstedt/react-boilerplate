@@ -9,9 +9,9 @@
   "private": true,
   "scripts": {
     "start": "webpack-dev-server --mode development --open",
-    "build": "webpack --mode production",
+    "build": "webpack --config webpack.config.prod.js --mode production",
     "test": "jest",
-    "analyze": "source-map-explorer dist/main.*"
+    "analyze": "source-map-explorer dist/bundle.js"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.46",
@@ -34,6 +34,7 @@
     "jest": "^22.4.3",
     "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.9.0",
+    "optimize-css-assets-webpack-plugin": "^4.0.1",
     "resolve-url-loader": "^2.3.0",
     "sass-loader": "^7.0.1",
     "source-map-explorer": "^1.5.0",
